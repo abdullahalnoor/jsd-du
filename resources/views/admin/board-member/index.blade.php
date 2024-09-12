@@ -20,7 +20,7 @@ Manage Board Members
                     <tr>
                       <th>Sl</th>
                       <th>Name </th>
-                      <!-- <th>Image </th> -->
+                      <th>Image </th>
                       <th>Order Id</th>
                       <th>Status</th>
                       <th>Action</th>
@@ -65,7 +65,7 @@ Manage Board Members
         columns: [
              { data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false },
             {data: 'name', name: 'name'},
-            // {data: 'image', name: 'image', orderable: false, searchable: false},
+            {data: 'image', name: 'image', orderable: false, searchable: false},
             {data: 'order_id', name: 'order_id'},
             {data: 'status', name: 'status', orderable: false, searchable: false},
             {data: 'action', name: 'action', orderable: false, searchable: false},

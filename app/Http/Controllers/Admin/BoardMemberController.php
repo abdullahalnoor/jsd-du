@@ -36,10 +36,10 @@ class BoardMemberController extends Controller
                             return $status;
                           
                         })
-                        // ->addColumn('image', function($row){
-                        //     $url = asset($row->image);
-                        //     return '<img alt="Image" src="'.$url.'"  border="0" width="60" class="img-rounded" align="center" />';
-                        // })
+                        ->addColumn('image', function($row){
+                            $url = asset($row->image);
+                            return '<img alt="Image" src="'.$url.'"  border="0" width="60" class="img-rounded" align="center" />';
+                        })
                         // ->addColumn('image', function($row){
                         //      $url = asset($row->image);
                         //     return '<img alt="Image" src="'.$url.'" border="0" width="60" class="img-rounded" align="center" />';
@@ -51,7 +51,7 @@ class BoardMemberController extends Controller
                             $btn .=  "</div>";
                             return $btn;
                         })
-                        ->rawColumns(['status','action'])
+                        ->rawColumns(['image','status','action'])
                         // ->buttons([
                         //     Button::make('add'),
                         //     Button::make('excel'),
