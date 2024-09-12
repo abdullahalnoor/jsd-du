@@ -1,7 +1,7 @@
 @extends('admin.master')
 
 @section("title")
-Manage Categories 
+Manage Articles 
 @endsection
 
 @push('styles')

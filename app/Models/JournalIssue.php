@@ -17,7 +17,7 @@ class JournalIssue extends Model
     }
     public function journalArticles(): HasMany
     {
-        return $this->hasMany(JournalArticle::class);
+        return $this->hasMany(JournalArticle::class)->orderBy('order_id','asc');
     }
 
 }

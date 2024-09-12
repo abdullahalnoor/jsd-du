@@ -183,12 +183,12 @@ class MemberController extends Controller
         // return $request->all();
         $validator = Validator::make($request->all(),[
             // 'image' => 'nullable|max:512',
-            'image' => 'nullable|mimes:jpeg,jpg,png|max:512',
+            'image' => 'required|mimes:jpeg,jpg,png|max:512',
             // 'image' => ['required', 'extensions:jpg,png'],
             'name' => 'nullable|string|max:120',
             'affiliation' => 'required|string|max:255',
-            'mobile_number' => 'nullable|string|max:50',
-            'contact_email' => 'nullable|string|max:255',
+            'mobile_number' => 'required|string|max:50',
+            'contact_email' => 'required|string|max:255',
             'website_url' => 'nullable|string|max:255',
             'linkedin_url' => 'nullable|string|max:255',
           
@@ -320,6 +320,28 @@ class MemberController extends Controller
             $manuscriptVersion->approval_status = 1;
             $manuscriptVersion->save();
 
+
+            // $manuscript = Manuscript::with('manuscriptVersion')->findOrFail($request->manuscript_id);
+   
+            $mail_body = " <br/> You have been submitted a manuscript in  ". date('Y-M-d',strtotime($manuscript->submitted_date)).'.';
+            $mail_body .= "  <br/> <b>Manuscript Subject</b> is ". $manuscript->subject;
+            $mail_body .= " <br/><br/>  <b>Abstract</b> : ". $manuscript->abstract;
+        
+            $mailMessages = [
+                     
+                      'subject' => $request->subject,
+                      'name' => "JSD-ISWR",
+                      'action_text' => 'Mail Verification',
+                       'mail_body' =>  $mail_body,
+                      'action_url' => '#',
+                      'home_url' => route('frontend.index'),
+                      'markdown' =>'mail.manuscript-mail',
+                  ];
+        
+             $user = User::find($manuscript->user_id);     
+                //   return $user->profile;
+              $user->notify((new ManuscriptMailNotification($mailMessages)));
+
         DB::commit();
         Session::flash('success','The Manuscript has been successfully submitted..');
         }catch(\Exception $e){
@@ -340,7 +362,7 @@ class MemberController extends Controller
 
     public function viewManuscript($id){
          $manuscript = Manuscript::with('manuscriptVersion')->findOrFail($id);
-         $manuscriptMails = ManuscriptMail::where('manuscript_version_id',$manuscript->manuscriptVersion->id)->orderBy('id','desc')->get();
+         $manuscriptMails = ManuscriptMail::where('manuscript_version_id',$manuscript->manuscriptVersion->id)->orderBy('id','asc')->get();
         return view('frontend.submit-manuscript.view-manuscript',get_defined_vars());
     }
     public function sendMail(Request $request){
@@ -356,7 +378,7 @@ class MemberController extends Controller
     $mail_body .= " <br/><br/>  <b>Message</b> : ". $request->message;
 
     $mailMessages = [
-              'send_to' => 'kristinrlutz@gmail.com',
+            
               'subject' => $request->subject,
               'name' => "JSD-ISWR",
               'action_text' => 'Mail Verification',

@@ -1,7 +1,7 @@
 @extends('frontend.master')
 
 @section("title")
-Article
+{{$journalArticle->title}}
 @endsection
 
 @push('styles')
@@ -149,7 +149,7 @@ Article
 
               <div class="content">
                
-                <a href="#"><h3>{{$journalArticle->title}}</h3></a>
+                <a href="javascript:void(0)"><h3>{{$journalArticle->title}}</h3></a>
                 <p>{{$journalArticle->abstract}}</p>
               
                 <p>
@@ -165,9 +165,9 @@ Article
 
               <div class="meta-top">
                 <ul>
-                  <li class="d-flex align-items-center"><i class="bi bi-book"></i> <a href="blog-details.html"> {{$journalArticle->page_no}} Pages </a></li>
-                  <li class="d-flex align-items-center"><i class="bi bi-download"></i> <a href="blog-details.html">{{$journalArticle->download_count}} Downloaded </a></li>
-                  <li class="d-flex align-items-center"><i class="bi bi-eye"></i> <a href="blog-details.html">{{$journalArticle->view_count}}  Viewed </a></li>
+                  <li class="d-flex align-items-center"><i class="bi bi-book"></i> <a href="javascript:void(0)"> {{$journalArticle->page_no}} Pages </a></li>
+                  <li class="d-flex align-items-center"><i class="bi bi-download"></i> <a href="javascript:void(0)">{{$journalArticle->download_count}} Downloaded </a></li>
+                  <li class="d-flex align-items-center"><i class="bi bi-eye"></i> <a href="javascript:void(0)">{{$journalArticle->view_count}}  Viewed </a></li>
                  </ul>
               </div>
               

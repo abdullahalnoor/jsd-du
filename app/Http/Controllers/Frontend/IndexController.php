@@ -21,7 +21,7 @@ use Response;
 class IndexController extends Controller
 {
     public function index(){
-        $journalIssue = JournalIssue::with('journalArticles')->orderBy('id','desc')->first();
+        $journalIssue = JournalIssue::with('journalArticles')->where('status',1)->orderBy('order_id','desc')->first();
         return view('frontend.home.index',\get_defined_vars());
     }
 
@@ -45,7 +45,7 @@ class IndexController extends Controller
 
     public function journalAllIssues(){
         // return 1;
-         $journalIssues = JournalIssue::with('journalArticles')->get();
+         $journalIssues = JournalIssue::where('status',1)->orderBy('order_id','desc')->with('journalArticles')->get();
         return view('frontend.journal.all-issue',\get_defined_vars());
     }
 
@@ -91,7 +91,13 @@ class IndexController extends Controller
     
     public function journaEditorialTeam(){
         // return 1;
-         $boardMembers = BoardMember::orderBy('order_id','asc')->get();
+         $editor = BoardMember::orderBy('order_id','asc')->first();
+         $assEditor = BoardMember::orderBy('order_id','asc')->skip(1)->first();
+        $count = BoardMember::count();
+        $skip = 2;
+        $limit = $count - $skip; // the limit
+        $boardMembers = BoardMember::orderBy('order_id','asc')->skip($skip)->take($limit)->get();
+
         return view('frontend.journal.editorial-team',\get_defined_vars());
     }
 

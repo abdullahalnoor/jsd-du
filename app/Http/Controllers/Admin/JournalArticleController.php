@@ -22,7 +22,7 @@ class JournalArticleController extends Controller
         {
             if($request->ajax()) {
               
-                $journalArticles = JournalArticle::where('journal_issue_id',$id)->orderBy('id','desc')->select('*');
+                $journalArticles = JournalArticle::where('journal_issue_id',$id)->orderBy('order_id','asc')->select('*');
 
                 return Datatables::of($journalArticles)
                         ->addIndexColumn()

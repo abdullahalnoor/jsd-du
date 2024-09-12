@@ -42,12 +42,12 @@ Home
     <div class="col-md-8">
       <div class="card-body">
         <h4 class="card-title">About the Journal</h4>
-        <p></i> <b>Chief Editor : </b> {{$journalIssue->chief_editor}}  <br>
-      </i> <b>ISSN : </b> 15248380      <br>
-                </i> <b>eISSN : </b> 15528324  <br>
-                </i> <b>Latest Volume  : </b> {{ $journalIssue->journalVolume->volume_no  }}  <br>
+        <p></i> <b>Chief Editor : </b> Dr. Md. Golam Azam <br>
+      </i> <b>ISSN : </b>       <br>
+                </i> <b>eISSN : </b>   <br>
+                </i> <b> Volume  : </b> {{ $journalIssue->journalVolume->volume_no  }}, {{ date('F Y',strtotime($journalIssue->publish_date  ))}}  <br>
                 </i> <b>Issue : </b> {{$journalIssue->issue_no}}  <br>
-                </i> <b>Frequency : </b> Yearly  <br>
+      
                <!-- <p></i> <b>Chief Editor : </b> {{$journalIssue->chief_editor}} </p>
                <p></i> <b>ISSN : </b> 15248380 </p>
                 <p></i> <b>eISSN : </b> 15528324 </p>
@@ -145,7 +145,7 @@ Home
             </article> -->
             <!-- <article class="blog-details"> -->
             <p class="cross-line-right">
-          <span>Research Papers  </span>
+          <span>Volume {{ $journalIssue->journalVolume->volume_no  }}, {{ date('F Y',strtotime($journalIssue->publish_date  ))}}   </span>
         </p>
 
         <!-- <div class="top">    
@@ -176,16 +176,16 @@ Home
 
               <div class="meta-top">
                 <ul>
-                  <li class="d-flex align-items-center"><i class="bi bi-book"></i> <a href="blog-details.html"> {{$journalArticleItem->page_no}} Pages </a></li>
-                  <li class="d-flex align-items-center"><i class="bi bi-download"></i> <a href="blog-details.html">{{$journalArticleItem->download_count}} Downloaded </a></li>
-                  <li class="d-flex align-items-center"><i class="bi bi-eye"></i> <a href="blog-details.html">{{$journalArticleItem->view_count}}  Viewed </a></li>
+                  <li class="d-flex align-items-center"><i class="bi bi-book"></i> <a href="javascript:void(0)"> {{$journalArticleItem->page_no}} Pages </a></li>
+                  <li class="d-flex align-items-center"><i class="bi bi-download"></i> <a href="javascript:void(0)">{{$journalArticleItem->download_count}} Downloaded </a></li>
+                  <li class="d-flex align-items-center"><i class="bi bi-eye"></i> <a href="javascript:void(0)">{{$journalArticleItem->view_count}}  Viewed </a></li>
                  </ul>
               </div>
               
 <hr>
-              <a class="btn btn-sm btn-outline-primary" href="#">  <i class="bi bi-download"></i> Download</a>
-              <a class="btn btn-sm btn-outline-primary" href="#"> <i class="bi bi-filetype-pdf"></i> PDF</a>
-              <a class="btn btn-sm btn-outline-primary" href="{{route('frontend.journal.article',$journalArticleItem->id)}}">  <i class="bi bi-eye"></i> Read</a>
+<a class="btn btn-sm btn-outline-primary" href="{{route('frontend.journal.download-file',$journalArticleItem->id)}}">  <i class="bi bi-download"></i> Download</a>
+<a class="btn btn-sm btn-outline-primary" target="_blank" href="{{route('frontend.journal.view-file',$journalArticleItem->id)}}"> <i class="bi bi-filetype-pdf"></i> PDF</a>
+<a class="btn btn-sm btn-outline-primary" href="{{route('frontend.journal.article',$journalArticleItem->id)}}">  <i class="bi bi-eye"></i> Read</a>
 
               <!-- <div class="meta-bottom">
               

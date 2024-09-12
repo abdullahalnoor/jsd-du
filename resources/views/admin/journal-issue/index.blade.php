@@ -1,7 +1,7 @@
 @extends('admin.master')
 
 @section("title")
-Manage Categories 
+Manage Issues 
 @endsection
 
 @push('styles')
@@ -17,8 +17,13 @@ Manage Categories
                   <thead>
                     <tr>
                       <th>Sl</th>
+                      
                       <th>Issue No</th>
+                      <th>Volume No</th>
+                      <th>Publish Date</th>
+                      <th>Order No</th>
                       <th>Status</th>
+                  
                       <th>Action</th>
                     </tr>
                   </thead>
@@ -60,6 +65,9 @@ Manage Categories
         columns: [
              { data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false },
             {data: 'issue_no', name: 'issue_no'},
+            {data: 'volume_no', name: 'volume_no'},
+            {data: 'publish_date', name: 'publish_date'},
+            {data: 'order_id', name: 'order_id'},
             {data: 'status', name: 'status', orderable: false, searchable: false},
             {data: 'action', name: 'action', orderable: false, searchable: false},
         ]

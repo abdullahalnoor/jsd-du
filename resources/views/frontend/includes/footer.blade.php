@@ -32,7 +32,7 @@
           <div class="col-lg-4 col-md-6 footer-links">
             <h4>Journal</h4>
             <ul>
-            <li><i class="bi bi-chevron-right"></i><a href="{{route('frontend.journal.current-issues')}}" >	Current issues</a></li>
+            <li><i class="bi bi-chevron-right"></i><a href="{{route('frontend.journal.current-issue')}}" >	Current issues</a></li>
               <li><i class="bi bi-chevron-right"></i><a href="{{route('frontend.journal.all-issues')}}">All issues</a></li>
             <li><i class="bi bi-chevron-right"></i><a href="{{route('frontend.page',['slug'=>'author-guidelines'])}}" >Author Guidelines</a></li>
               <li><i class="bi bi-chevron-right"></i><a href="{{route('frontend.page',['slug'=>'guidelines-for-reviewers'])}}">Guidelines for Reviewers</a></li>

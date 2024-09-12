@@ -1,7 +1,7 @@
 @extends('admin.master')
 
 @section("title")
-Update Site Page
+Update  Page
 @endsection
 
 @push('styles')

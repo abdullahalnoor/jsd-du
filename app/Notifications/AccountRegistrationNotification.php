@@ -7,7 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class ManuscriptMail extends Notification
+class AccountRegistrationNotification extends Notification
 {
     use Queueable;
 
@@ -41,13 +41,12 @@ class ManuscriptMail extends Notification
         return (new MailMessage)
         ->cc($notifiable->email)
         ->bcc($notifiable->email)
-        // ->bcc($notifiable->profile->contact_email)
         ->subject($this->mailMessages['subject']) 
         ->action($this->mailMessages['action_text'], $this->mailMessages['home_url'])
         // ->markdown('frontend.emails.general-mail', ['url' => $this->mailMessages['action_url'],'mail_body' => $this->mailMessages['mail_body'], 'user' => $notifiable]);
-        ->markdown($this->mailMessages['markdown'], ['url' => $this->mailMessages['action_url'],'mail_body' => $this->mailMessages['mail_body'],'name' => $this->mailMessages['name'], 'user' => $notifiable]);
+        ->markdown('mail.account-registration', ['url' => $this->mailMessages['action_url'],'mail_body' => $this->mailMessages['mail_body'], 'user' => $notifiable]);
 
-        // return (new MailMessage)->markdown('mail.manuscript-mail');
+        // return (new MailMessage)->markdown('mail.account-registration');
     }
 
     /**

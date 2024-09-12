@@ -11,6 +11,8 @@ use Illuminate\Support\Facades\Validator;
 
 use App\Models\User;
 use App\Notifications\ForgotPasswordNotification;
+use App\Notifications\AccountRegistrationNotification;
+
 use App\Notifications\GeneralMail;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Crypt;
@@ -129,7 +131,8 @@ class AuthorizationController extends Controller
   }
 
   public function memberLoginForm(){
-    
+    Auth::guard('web')->logout();
+     
     return view('frontend.authorization.login',\get_defined_vars());
   }
 
@@ -219,7 +222,8 @@ class AuthorizationController extends Controller
                 ];
 
         $user->notify((new GeneralMail($mailMessages)));
-
+        // AccountRegistrationNotification
+        
           Auth::login($user, true);
           $message = 'A message with a verification code has been sent to your mail. 
           Enter the code to continue. Didn\'t get a verification code? Click "Resend Verification Code" button .';

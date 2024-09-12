@@ -27,7 +27,7 @@
 
           <li class="dropdown"><a href="#"><span>Issues</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
             <ul>
-              <li><a href="{{route('frontend.journal.current-issues')}}" >	Current issues</a></li>
+              <li><a href="{{route('frontend.journal.current-issue')}}" >	Current issue</a></li>
               <li><a href="{{route('frontend.journal.all-issues')}}">All issues</a></li>
           
             </ul>

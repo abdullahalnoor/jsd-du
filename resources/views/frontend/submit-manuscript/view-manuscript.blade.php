@@ -79,10 +79,14 @@ My Manuscript
                     <span  class="d-inline  btn btn-sm btn-outline-primary mx-1">
                     {{ \Carbon\Carbon::parse($manuscriptMailItem->sent_time)->diffForHumans() }}
                     </span> -->
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content_{{$key}}">
-              <i class="bi bi-question-circle question-icon"></i>
+            <button class="accordion-button  collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content_{{$key}}">
+              <i class="bi bi-question-circle question-icon ml-3"></i>
                   
-             {{$manuscriptMailItem->subject}}
+             @if($manuscriptMailItem->user_id == auth()->user()->id)
+             Me
+             @else
+              {{$manuscriptMailItem->user->name }} 
+              @endif -   {{$manuscriptMailItem->subject}}
             </button>
           </h3>
           <div id="faq-content_{{$key}}" class="accordion-collapse collapse" data-bs-parent="#faqlist">

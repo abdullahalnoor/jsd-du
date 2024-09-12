@@ -23,7 +23,7 @@ class BoardMemberController extends Controller
         {
             if($request->ajax()) {
               
-                $boardMembers = BoardMember::orderBy('id','desc')->select('*');
+                $boardMembers = BoardMember::orderBy('order_id','asc')->select('*');
 
                 return Datatables::of($boardMembers)
                         ->addIndexColumn()
@@ -37,9 +37,8 @@ class BoardMemberController extends Controller
                           
                         })
                         // ->addColumn('image', function($row){
-                        //      $url = asset($row->image);
-                        //     return '<img alt="Image" src="'.$url.'" border="0" width="60" class="img-rounded" align="center" />';
-                          
+                        //     $url = asset($row->image);
+                        //     return '<img alt="Image" src="'.$url.'"  border="0" width="60" class="img-rounded" align="center" />';
                         // })
                         // ->addColumn('image', function($row){
                         //      $url = asset($row->image);

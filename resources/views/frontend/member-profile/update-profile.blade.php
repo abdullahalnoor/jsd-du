@@ -106,9 +106,9 @@ Update Profile
 
           <div class="form-group mt-3">
           <label for="website_url" class="form-label">
-          Website URL <b><i class="text-danger">*</i></b>
+          Website URL 
           </label>
-            <input type="url" class="form-control" name="website_url" id="website_url" placeholder="Enter Website URL.." value="{{old('website_url',$profile->website_url)}}" required>
+            <input type="url" class="form-control" name="website_url" id="website_url" placeholder="Enter Website URL.." value="{{old('website_url',$profile->website_url)}}" >
             @error('website_url')
                 <span class="text-danger" role="alert">
                         <strong>{{ $message }}</strong>
@@ -118,9 +118,9 @@ Update Profile
 
           <div class="form-group mt-3">
           <label for="linkedin_url" class="form-label">
-          Linkedin URL <b><i class="text-danger">*</i></b>
+          Linkedin URL 
           </label>
-            <input type="url" class="form-control" name="linkedin_url" id="linkedin_url" placeholder="Enter Linkedin URL.." value="{{old('linkedin_url',$profile->linkedin_url)}}" required>
+            <input type="url" class="form-control" name="linkedin_url" id="linkedin_url" placeholder="Enter Linkedin URL.." value="{{old('linkedin_url',$profile->linkedin_url)}}" >
             @error('linkedin_url')
                 <span class="text-danger" role="alert">
                         <strong>{{ $message }}</strong>

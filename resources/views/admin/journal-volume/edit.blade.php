@@ -1,7 +1,7 @@
 @extends('admin.master')
 
 @section("title")
-Update Category
+Update Volume
 @endsection
 
 @push('styles')

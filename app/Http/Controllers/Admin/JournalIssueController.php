@@ -24,7 +24,7 @@ class JournalIssueController extends Controller
         {
             if($request->ajax()) {
               
-                $journalIssues = JournalIssue::orderBy('id','desc')->select('*');
+                $journalIssues = JournalIssue::orderBy('order_id','desc')->select('*');
 
                 return Datatables::of($journalIssues)
                         ->addIndexColumn()
@@ -36,7 +36,15 @@ class JournalIssueController extends Controller
                             }
                             return $status;
                           
-                        })
+                        })->addColumn('publish_date', function($row){
+                                
+                                return date('d-F-Y',strtotime($row->publish_date));
+                              
+                            })->addColumn('volume_no', function($row){
+                                
+                                return $row->journalVolume->volume_no;
+                              
+                            })
                         // ->addColumn('image', function($row){
                         //      $url = asset($row->image);
                         //     return '<img alt="Image" src="'.$url.'" border="0" width="60" class="img-rounded" align="center" />';
@@ -54,7 +62,7 @@ class JournalIssueController extends Controller
                             $btn .=  "</div>";
                             return $btn;
                         })
-                        ->rawColumns(['status','action'])
+                        ->rawColumns(['publish_date','volume_no','status','action'])
                         // ->buttons([
                         //     Button::make('add'),
                         //     Button::make('excel'),

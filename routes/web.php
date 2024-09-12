@@ -98,8 +98,8 @@ Route::get('/page/{slug}',[IndexController::class,'sitePage'])
 // ->name('frontend.guidelines-for-reviewers');
 
 // journal route
-Route::get('/current-issues',[IndexController::class,'journalCurrentIssue'])
-->name('frontend.journal.current-issues');
+Route::get('/current-issue',[IndexController::class,'journalCurrentIssue'])
+->name('frontend.journal.current-issue');
 
 Route::get('/issues/{id}/view',[IndexController::class,'journalIssue'])
 ->name('frontend.journal.issues');

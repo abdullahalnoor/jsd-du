@@ -1,7 +1,7 @@
 @extends('admin.master')
 
 @section("title")
-Update Category
+Update Author
 @endsection
 
 @push('styles')

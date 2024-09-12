@@ -1,7 +1,7 @@
 @extends('admin.master')
 
 @section("title")
-Update Category
+Update Issue
 @endsection
 
 @push('styles')
@@ -24,7 +24,7 @@ Update Category
             <div class="tile-body">
 
             <div class="mb-3">
-                    <label class="form-label" for="journal_volume"><b>Journal Year  <i class="text-danger">*</i> </b></label>
+                    <label class="form-label" for="journal_volume"><b>Volume No   <i class="text-danger">*</i> </b></label>
                     <select  class="form-control" name="journal_volume" id="journal_volume">
                     <option value="">Select One</option>
                     @foreach($journalVolumes as $JournalVolumeitem )

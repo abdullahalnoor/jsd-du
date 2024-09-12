@@ -56,6 +56,60 @@ Editorial Team
 
           <div class="col-lg-8 ">
 
+          <p class="cross-line-right">
+            <span>Editor  </span>
+          </p>
+
+          <div class="card shadow-sm p-3  bg-body rounded mb-5" >
+        <div class="row g-0">
+          <div class="col-md-3">
+            <img src="{{asset($editor->image)}}" class="img-fluid p-1 rounded-start" alt="...">
+          </div>
+          <div class="col-md-9">
+            <div class="card-body">
+            <!-- <h5 class="card-title">{{$editor->name}}</h5> -->
+            <ul class="list-group list-group-flush">
+          <li class="list-group-item ">{{$editor->name}}</li>
+          <li class="list-group-item">{{$editor->designation}}</li>
+
+        </ul>
+              <!-- <h5 class="card-title">{{$editor->name}}</h5>
+              <p class="card-text">{{$editor->designation}} </p>
+              <p class="card-text">{{$editor->affiliation}} </p> -->
+              <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <p class="cross-line-right">
+            <span>Associate Editor  </span>
+          </p>
+
+          <div class="card shadow-sm p-3  bg-body rounded mb-5" >
+        <div class="row g-0">
+          <div class="col-md-3">
+            <img src="{{asset($assEditor->image)}}" class="img-fluid p-1 rounded-start" alt="...">
+          </div>
+          <div class="col-md-9">
+            <div class="card-body">
+            <!-- <h5 class="card-title">{{$assEditor->name}}</h5> -->
+            <ul class="list-group list-group-flush">
+            <li class="list-group-item ">{{$assEditor->name}}</li>
+            <li class="list-group-item">{{$assEditor->designation}}</li>
+
+          </ul>
+          </div>
+          </div>
+        </div>
+      </div>
+
+          <p class="cross-line-right">
+            <span>Members  </span>
+          </p>
+
+
           @foreach($boardMembers as $boardMember)
           <div class="card shadow-sm p-3  bg-body rounded mb-2" >
   <div class="row g-0">
@@ -68,7 +122,7 @@ Editorial Team
       <ul class="list-group list-group-flush">
     <li class="list-group-item ">{{$boardMember->name}}</li>
     <li class="list-group-item">{{$boardMember->designation}}</li>
-    <li class="list-group-item">{{$boardMember->affiliation}}</li>
+
   </ul>
         <!-- <h5 class="card-title">{{$boardMember->name}}</h5>
         <p class="card-text">{{$boardMember->designation}} </p>

@@ -1,7 +1,7 @@
 @extends('frontend.master')
 
 @section("title")
-Issues
+Issue {{$journalIssue->issue_no}} 
 @endsection
 
 @push('styles')
@@ -15,11 +15,11 @@ Issues
       <div class="container">
 
         <div class="d-flex justify-content-between align-items-center">
-          <h2> Issues</h2>
+          <h2> Issue {{$journalIssue->issue_no}} </h2>
           <ol>
             <li><a href="{{route('frontend.index')}}">Home</a></li>
             <!-- <li><a href="blog.html">Blog</a></li> -->
-            <li> Issues</li>
+            <li> Issue {{$journalIssue->issue_no}} </li>
           </ol>
         </div>
 
@@ -41,13 +41,10 @@ Issues
     </div>
     <div class="col-md-8">
       <div class="card-body">
-        <h4 class="card-title">{{$journalIssue->title}}</h4>
-        <p>
-                <i class="bi bi-calendar"></i> <b>DOI : </b> {{$journalIssue->created_at}}
-                </p>
-                <p>
-                <i class="bi bi-book"></i> <b>Pages : </b> {{$journalIssue->page_no}}
-                </p>
+        <!-- <h4 class="card-title">{{$journalIssue->title}}</h4> -->
+         
+        </i> <b> Volume  : </b> {{ $journalIssue->journalVolume->volume_no  }}, {{ date('F Y',strtotime($journalIssue->publish_date  ))}}  <br>
+        </i> <b>Issue : </b> {{$journalIssue->issue_no}}  <br>
         <!-- <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p> -->
         <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
       </div>
@@ -133,7 +130,7 @@ Issues
             </article> -->
             <!-- <article class="blog-details"> -->
             <p class="cross-line-right">
-          <span>Research Papers </span>
+          <span>Volume  {{ $journalIssue->journalVolume->volume_no  }}, {{ date('F Y',strtotime($journalIssue->publish_date  ))}} </span>
         </p>
 
         <!-- <div class="top">    
@@ -164,15 +161,15 @@ Issues
 
               <div class="meta-top">
                 <ul>
-                  <li class="d-flex align-items-center"><i class="bi bi-book"></i> <a href="blog-details.html"> {{$journalArticleItem->page_no}} Pages </a></li>
-                  <li class="d-flex align-items-center"><i class="bi bi-download"></i> <a href="blog-details.html">{{$journalArticleItem->download_count}} Downloaded </a></li>
-                  <li class="d-flex align-items-center"><i class="bi bi-eye"></i> <a href="blog-details.html">{{$journalArticleItem->view_count}}  Viewed </a></li>
+                  <li class="d-flex align-items-center"><i class="bi bi-book"></i> <a href="javascript:void(0)"> {{$journalArticleItem->page_no}} Pages </a></li>
+                  <li class="d-flex align-items-center"><i class="bi bi-download"></i> <a href="javascript:void(0)">{{$journalArticleItem->download_count}} Downloaded </a></li>
+                  <li class="d-flex align-items-center"><i class="bi bi-eye"></i> <a href="javascript:void(0)">{{$journalArticleItem->view_count}}  Viewed </a></li>
                  </ul>
               </div>
               
 <hr>
-              <a class="btn btn-sm btn-outline-primary" href="#">  <i class="bi bi-download"></i> Download</a>
-              <a class="btn btn-sm btn-outline-primary" href="#"> <i class="bi bi-filetype-pdf"></i> PDF</a>
+<a class="btn btn-sm btn-outline-primary" href="{{route('frontend.journal.download-file',$journalArticleItem->id)}}">  <i class="bi bi-download"></i> Download</a>
+<a class="btn btn-sm btn-outline-primary" target="_blank" href="{{route('frontend.journal.view-file',$journalArticleItem->id)}}"> <i class="bi bi-filetype-pdf"></i> PDF</a>
               <a class="btn btn-sm btn-outline-primary" href="{{route('frontend.journal.article',$journalArticleItem->id)}}">  <i class="bi bi-eye"></i> Read</a>
 
               <!-- <div class="meta-bottom">
